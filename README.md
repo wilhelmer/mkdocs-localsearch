@@ -24,22 +24,29 @@ extra_javascript:
 
 See https://github.com/mkdocs/mkdocs/pull/1805
 
-This plugin appends the `fetch_shim.js` content (minified) to `search_index.js`, so there's no need for a separate JS file.
+Modifications to the solution given above:
 
-Also, the plugin doesn't distinguish between local and web calls, so the fetch shim is much simpler:
+- The JS code given in `fetch_shim.js` is appended to `search_index.js`, so there's no need for a separate JS file.
+- The plugin doesn't distinguish between local and web calls. It always uses `search_index.js`.
+- The plugin only modifies the fetch function if the url parameter contains "search_index.js". Otherwise, it uses the the native fetch function.
 
 ```javascript
+fetch_native = fetch;
 fetch = function (url, options) {
-    return new Promise(
-        function (resolve, reject) {
-            var shimResponse = {
-                json: function () {
-                    // This should return the search index
-                    return shim_localSearchIndex;
+    if (url.indexOf("search_index.js") !== -1) {
+        return new Promise(
+            function (resolve, reject) {
+                var shimResponse = {
+                    json: function () {
+                        return shim_searchIndex;
+                    }
                 }
+                resolve(shimResponse)
             }
-            resolve(shimResponse)
-        }
-    )
+        )
+    }
+    else {
+        return fetch_native(url, options);
+    }
 }
 ```
