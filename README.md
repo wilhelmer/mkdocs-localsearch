@@ -26,9 +26,10 @@ See https://github.com/mkdocs/mkdocs/pull/1805
 
 Modifications to the solution given above:
 
-- The JS code given in `fetch_shim.js` is appended to `search_index.js`, so there's no need for a separate JS file.
-- The plugin doesn't distinguish between local and web calls. It always uses `search_index.js`.
-- The plugin only modifies the fetch function if the url parameter contains "search_index.js". Otherwise, it uses the the native fetch function.
+- The JS code given in `fetch_shim.js` appended to `search_index.js` (in minified format), so there's no need for a separate JS file.
+- `fetch_shim.js` has been tweaked as follows (code shown below): 
+    - No distinction between local and web use. Always use `search_index.js`.
+    - Always use the native fetch function unless the url parameter contains "search_index.js".
 
 ```javascript
 fetch_native = fetch;
