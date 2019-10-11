@@ -2,23 +2,33 @@
 
 A MkDocs plugin to replace the native "search" plugin with a search plugin that also works locally (file:// protocol)
 
+**NOTE:** This plugin currently only works with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme. If you need support for other themes, feel free to create a pull request.
+
 ## Installation
 
-Install the plugin using pip:
-
-`pip install mkdocs-localsearch`
-
-Activate the plugin in `mkdocs.yml`:
-```yaml
-plugins:
-  - search
-```
-
-Add `search_index.js` to the `extra_javascript` section in `mkdocs.yml`:
-```yaml
-extra_javascript:
-  - search/search_index.js
-```
+1. Install the plugin using pip: `pip install mkdocs-localsearch`
+2. Activate the plugin in `mkdocs.yml`:
+    ```yaml
+    plugins:
+        - localsearch
+    ```
+3. Add `search_index.js` to the `extra_javascript` section in `mkdocs.yml`:
+    ```yaml
+    extra_javascript:
+        - search/search_index.js
+    ```
+4. Add `custom_dir` to the `theme` section in `mkdocs.yml`:
+    ```yaml
+    theme:
+        name: material
+        custom_dir: theme
+    ```
+5. Open [this file](https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/partials/header.html) and save it in your project dir as `theme/partials/header.html`.
+6. Edit `theme/partials/header.html` and change the following line:<br>
+   `{% if "search" in config["plugins"] %}`<br>
+   to this:<br>
+   `{% if "localsearch" in config["plugins"] %}`
+7. Done!
 
 ## How It Works
 
