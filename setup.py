@@ -2,8 +2,8 @@ from setuptools import setup, find_packages
 
 setup(
     name='mkdocs-localsearch',
-    version='0.2.0',
-    description='A MkDocs plugin to replace the native "search" plugin with a search plugin that also works locally (file:// protocol)',
+    version='0.3.0',
+    description='A MkDocs plugin to replace the native "search" plugin with a search plugin that also works locally (file:// protocol). Only works with the Material theme.',
     long_description='',
     keywords='mkdocs local search',
     url='https://github.com/wilhelmer/mkdocs-localsearch',
