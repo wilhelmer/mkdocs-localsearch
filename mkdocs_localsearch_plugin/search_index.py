@@ -1,23 +1,17 @@
-# coding: utf-8
-
-from __future__ import unicode_literals
-
 import os
 import re
 import json
 import logging
 import subprocess
-from mkdocs import utils
 
-try:                                    # pragma: no cover
-    from html.parser import HTMLParser  # noqa
-except ImportError:                     # pragma: no cover
-    from HTMLParser import HTMLParser   # noqa
+from lunr import lunr
+
+from html.parser import HTMLParser
 
 log = logging.getLogger(__name__)
 
 
-class SearchIndex(object):
+class SearchIndex:
     """
     Search index is a collection of pages and sections (heading
     tags and their following content are sections).
@@ -33,7 +27,7 @@ class SearchIndex(object):
         and return the matched item in the TOC.
         """
         for toc_item in toc:
-            if toc_item.url[1:] == id_:
+            if toc_item.id == id_:
                 return toc_item
             toc_item_r = self._find_toc_by_id(toc_item.children, id_)
             if toc_item_r is not None:
@@ -49,7 +43,7 @@ class SearchIndex(object):
 
         self._entries.append({
             'title': title,
-            'text': utils.text_type(text.encode('utf-8'), encoding='utf-8'),
+            'text': str(text.encode('utf-8'), encoding='utf-8'),
             'location': loc
         })
 
@@ -93,7 +87,7 @@ class SearchIndex(object):
         if toc_item is not None:
             self._add_entry(
                 title=toc_item.title,
-                text=u" ".join(section.text),
+                text=" ".join(section.text),
                 loc=abs_url + toc_item.url
             )
 
@@ -105,7 +99,7 @@ class SearchIndex(object):
         }
         data = json.dumps(page_dicts, sort_keys=True, separators=(',', ':'))
 
-        if self.config['prebuild_index']:
+        if self.config['prebuild_index'] in (True, 'node'):
             try:
                 script_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'prebuild-index.js')
                 p = subprocess.Popen(
@@ -122,8 +116,14 @@ class SearchIndex(object):
                     log.debug('Pre-built search index created successfully.')
                 else:
                     log.warning('Failed to pre-build search index. Error: {}'.format(err))
-            except (OSError, IOError, ValueError) as e:
+            except (OSError, ValueError) as e:
                 log.warning('Failed to pre-build search index. Error: {}'.format(e))
+        elif self.config['prebuild_index'] == 'python':
+            idx = lunr(
+                ref='location', fields=('title', 'text'), documents=self._entries,
+                languages=self.config['lang'])
+            page_dicts['index'] = idx.serialize()
+            data = json.dumps(page_dicts, sort_keys=True, separators=(',', ':'))
 
         return data
 
@@ -142,9 +142,7 @@ class HTMLStripper(HTMLParser):
     """
 
     def __init__(self, *args, **kwargs):
-        # HTMLParser is a old-style class in Python 2, so
-        # super() wont work here.
-        HTMLParser.__init__(self, *args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         self.data = []
 
@@ -158,7 +156,7 @@ class HTMLStripper(HTMLParser):
         return '\n'.join(self.data)
 
 
-class ContentSection(object):
+class ContentSection:
     """
     Used by the ContentParser class to capture the information we
     need when it is parsing the HMTL.
@@ -186,9 +184,7 @@ class ContentParser(HTMLParser):
 
     def __init__(self, *args, **kwargs):
 
-        # HTMLParser is a old-style class in Python 2, so
-        # super() wont work here.
-        HTMLParser.__init__(self, *args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         self.data = []
         self.section = None
