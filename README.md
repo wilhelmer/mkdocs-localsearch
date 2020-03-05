@@ -2,7 +2,7 @@
 
 A MkDocs plugin to replace the native "search" plugin with a search plugin that also works locally (file:// protocol)
 
-**NOTE:** This plugin only works with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme, version 4.x. It does not support Material v5. For details, see [here](https://github.com/squidfunk/mkdocs-material/issues/1464). If you need support for other themes or newer versions of the Material theme, feel free to create a pull request.
+**NOTE:** This plugin only works with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme, version 5.x. If you need support for other themes, feel free to create a pull request.
 
 ## Installation
 
