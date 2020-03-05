@@ -61,12 +61,12 @@ class SearchPlugin(BasePlugin):
     def on_post_build(self, config, **kwargs):
         "Build search index."
         output_base_path = os.path.join(config['site_dir'], 'search')
-        # search_index = self.search_index.generate_search_index()
-        # json_output_path = os.path.join(output_base_path, 'search_index.json')
 
-        # Generate search_index.js including a fetch shim instead of the .json
-        fetch_shim_code = 'fetch_native=fetch,fetch=function(e,n){return-1!==e.indexOf("search_index.json")?new Promise(function(e,n){e({json:function(){return shim_searchIndex}})}):fetch_native(e,n)};'
-        search_index = "shim_searchIndex = " + self.search_index.generate_search_index() + "; " + fetch_shim_code
+        # Provide a Promise resolving with the contents of the search index
+        # search_index = self.search_index.generate_search_index()
+        search_index = "const idxJson = " + self.search_index.generate_search_index() + "; const index = Promise.resolve(idxJson)"
+        # Create JS file instead of JSON
+        # json_output_path = os.path.join(output_base_path, 'search_index.json')
         json_output_path = os.path.join(output_base_path, 'search_index.js')
 
         utils.write_file(search_index.encode('utf-8'), json_output_path)
