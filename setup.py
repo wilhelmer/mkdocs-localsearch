@@ -29,7 +29,7 @@ setup(
     packages=find_packages(),
     entry_points={
         'mkdocs.plugins': [
-            'localsearch = mkdocs_localsearch_plugin:SearchPlugin'
+            'localsearch = mkdocs_localsearch_plugin.plugin:LocalSearchPlugin'
         ]
     }
 )
