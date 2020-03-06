@@ -15,7 +15,7 @@ class LocalSearchPlugin(BasePlugin):
             # Open JSON search index file
             f = open(json_output_path,"r")
             # Modify file to provide a Promise resolving with the contents of the search index
-            search_index = "const idxJson = " + f.read() + "; const index = Promise.resolve(idxJson)"
+            search_index = "const idxJson = " + f.read() + ";\nconst local_index = new Promise(resolve => setTimeout(() => resolve(idxJson), 100));"
             utils.write_file(search_index.encode('utf-8'), json_output_path)
             f.close()
             # Rename JSON to JS
