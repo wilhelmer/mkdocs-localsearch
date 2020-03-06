@@ -7,19 +7,18 @@ log = logging.getLogger('mkdocs')
 
 class LocalSearchPlugin(BasePlugin):
 
-    def on_pre_build(self, config, **kwargs):
-        if 'search' in config['plugins']:
-            config['extra_javascript'].append('search/search_index.js')
-        else:
-            log.warning('localsearch: Missing search plugin. You must add both localsearch and search to the list of plugins in mkdocs.yml.')
-
     def on_post_build(self, config, **kwargs):
         if 'search' in config['plugins']:
             output_base_path = os.path.join(config['site_dir'], 'search')
             json_output_path = os.path.join(output_base_path, 'search_index.json')
             js_output_path = os.path.join(output_base_path, 'search_index.js')
+            # Open JSON search index file
             f = open(json_output_path,"r")
+            # Modify file to provide a Promise resolving with the contents of the search index
             search_index = "const idxJson = " + f.read() + "; const index = Promise.resolve(idxJson)"
             utils.write_file(search_index.encode('utf-8'), json_output_path)
             f.close()
+            # Rename JSON to JS
             os.rename(json_output_path, js_output_path)
+        else:
+            log.warning('localsearch: Missing search plugin. You must add both search and localsearch to the list of plugins in mkdocs.yml.')
