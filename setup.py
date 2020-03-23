@@ -10,9 +10,10 @@ setup(
     author='Lars Wilhelmer',
     author_email='lars@wilhelmer.de',
     license='MIT',
-    python_requires='>=2.7',
+    python_requires='>=3.5',
     install_requires=[
-        'mkdocs>=1.0.4'
+        'mkdocs>=1.1',
+        'mkdocs-material>=5.0.0rc3'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
