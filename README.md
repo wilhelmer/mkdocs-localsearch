@@ -21,7 +21,7 @@ To use the plugin with Material v5 projects:
         name: material
         custom_dir: theme
     ```
-5. Create a new file, save it in your project dir as `theme/partials/header.html`, and add the following content: 
+5. Create a new file, save it in your project dir as `theme/main.html`, and add the following content: 
     ```html
     {% extends "base.html" %}
     {% block config %}
@@ -32,9 +32,9 @@ To use the plugin with Material v5 projects:
     {% endblock %}
     ```
 6. If your documentation should work **offline**, i.e., without internet access:
-    1. Open [this file](https://unpkg.com/iframe-worker/polyfill) and save it as `iframe-worker.js` in your `docs_dir`<br>
-       Example path: `docs/assets/javascripts/iframe-worker.js`.
-    2. Edit `theme/partials/header.html` and change the following line:
+    1. Open [this file](https://unpkg.com/iframe-worker/polyfill) and save it as `iframe-worker.js` in your `docs_dir`.<br>
+       Example path: `docs/assets/javascripts/iframe-worker.js`
+    2. Edit `theme/main.html` and change the following line:
        ```html
        <script src="https://unpkg.com/iframe-worker/polyfill"></script>
        ```
