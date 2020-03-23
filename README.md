@@ -12,8 +12,8 @@ To use the plugin with Material v5 projects:
 2. Activate the plugin in `mkdocs.yml`, in addition to the `search` plugin:
     ```yaml
     plugins:
-        - localsearch
         - search
+        - localsearch
     ```
 4. Add a `custom_dir` entry to the `theme` section in `mkdocs.yml`:
     ```yaml
