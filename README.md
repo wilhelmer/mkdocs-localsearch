@@ -32,11 +32,12 @@ To use the plugin with Material v5 projects:
     {% endblock %}
     ```
 6. If your documentation should work **offline**, i.e., without internet access:
-    1. Open [this file](https://unpkg.com/iframe-worker/polyfill) and save it as `iframe-worker.js` in your `docs_dir`. Example path: `docs/assets/javascripts/iframe-worker.js`.
+    1. Open [this file](https://unpkg.com/iframe-worker/polyfill) and save it as `iframe-worker.js` in your `docs_dir`<br>
+       Example path: `docs/assets/javascripts/iframe-worker.js`.
     2. Edit `theme/partials/header.html` and change the following line:<br>
-       <script src="https://unpkg.com/iframe-worker/polyfill"></script>
+       `<script src="https://unpkg.com/iframe-worker/polyfill"></script>`
        to this:<br>
-       <script src="assets/javascripts/iframe-worker.js"></script>
+       `<script src="assets/javascripts/iframe-worker.js"></script>`
 7. If your project has a **large search index** (several MBytes), add the `promise_delay` setting:
     ```yaml
     plugins:
@@ -44,8 +45,7 @@ To use the plugin with Material v5 projects:
             promise_delay: 100
         - search
     ```
-    A delay of 100 ms worked with a search index of 24 MB ([prebuilt index](https://www.mkdocs.org/user-guide/configuration/#prebuild_index)).
-    Note that this has a negative effect on performance (loading time will be increased).
+    A delay of 100 ms worked with a search index of 24 MB ([prebuilt index](https://www.mkdocs.org/user-guide/configuration/#prebuild_index)).<br>Note that the `promise_delay` setting has a negative effect on performance (loading time will be increased).
 
 ## Installation (Material v4)
 
