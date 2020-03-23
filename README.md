@@ -34,10 +34,14 @@ To use the plugin with Material v5 projects:
 6. If your documentation should work **offline**, i.e., without internet access:
     1. Open [this file](https://unpkg.com/iframe-worker/polyfill) and save it as `iframe-worker.js` in your `docs_dir`<br>
        Example path: `docs/assets/javascripts/iframe-worker.js`.
-    2. Edit `theme/partials/header.html` and change the following line:<br>
-       `<script src="https://unpkg.com/iframe-worker/polyfill"></script>`
-       to this:<br>
-       `<script src="assets/javascripts/iframe-worker.js"></script>`
+    2. Edit `theme/partials/header.html` and change the following line:
+       ```html
+       <script src="https://unpkg.com/iframe-worker/polyfill"></script>
+       ```
+       to this:
+       ```html
+       <script src="assets/javascripts/iframe-worker.js"></script>
+       ```
 7. If your project has a **large search index** (several MBytes), add the `promise_delay` setting:
     ```yaml
     plugins:
