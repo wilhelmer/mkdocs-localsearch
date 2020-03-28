@@ -1,6 +1,6 @@
 # mkdocs-localsearch
 
-A MkDocs plugin to replace the native "search" plugin with a search plugin that also works locally (file:// protocol)
+A MkDocs plugin to make the native "search" plugin work locally (file:// protocol).
 
 **NOTE:** This plugin only works with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme. If you need support for other themes, feel free to create a pull request.
 
