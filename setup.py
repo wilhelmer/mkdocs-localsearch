@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='mkdocs-localsearch',
-    version='0.6.0',
+    version='0.7.0',
     description='A MkDocs plugin to replace the native "search" plugin with a search plugin that also works locally (file:// protocol). Only works with the Material theme.',
     long_description='',
     keywords='mkdocs local search',
@@ -13,7 +13,7 @@ setup(
     python_requires='>=3.5',
     install_requires=[
         'mkdocs>=1.1',
-        'mkdocs-material>=5.0.0rc3'
+        'mkdocs-material>=5.0.0rc4'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
