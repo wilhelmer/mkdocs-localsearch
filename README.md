@@ -40,7 +40,7 @@ To use the plugin with Material v5 projects:
        ```
        to this:
        ```html
-       <script src="{{ 'assets/js/iframe-worker.js' | url }}"></script>
+       <script src="{{ 'assets/javascripts/iframe-worker.js' | url }}"></script>
        ```
 7. If your project has a **large search index** (several MBytes), add the `promise_delay` setting:
     ```yaml
