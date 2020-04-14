@@ -27,7 +27,7 @@ To use the plugin with Material v5 projects:
     {% block config %}
     {% if "localsearch" in config["plugins"] %}
     <script src="https://unpkg.com/iframe-worker/polyfill"></script>
-    <script src="search/search_index.js"></script>
+    <script src="{{ 'search/search_index.js' | url }}"></script>
     {% endif %}
     {% endblock %}
     ```
@@ -40,7 +40,7 @@ To use the plugin with Material v5 projects:
        ```
        to this:
        ```html
-       <script src="assets/javascripts/iframe-worker.js"></script>
+       <script src="{{ 'assets/javascripts/iframe-worker.js' | url }}"></script>
        ```
 7. If your project has a **large search index** (several MBytes), add the `promise_delay` setting:
     ```yaml
