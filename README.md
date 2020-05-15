@@ -51,6 +51,8 @@ To use the plugin with Material v5 projects:
     ```
     A delay of 100 ms worked with a search index of 24 MB ([prebuilt index](https://www.mkdocs.org/user-guide/configuration/#prebuild_index)).<br>Note that the `promise_delay` setting has a negative effect on performance (loading time will be increased).
 
+**Note:** We do not use `extra_javascript` option in `mkdocs.yml` because, according to the [docs](https://www.mkdocs.org/user-guide/styling-your-docs/#combining-the-custom_dir-and-template-blocks), when a library is needed to the website is better to use this method.
+
 ## Installation (Material v4)
 
 To use the plugin with Material v4 projects:
