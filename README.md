@@ -31,6 +31,7 @@ To use the plugin with Material v5 projects:
     {% endif %}
     {% endblock %}
     ```
+    **Note:** Don't use the `extra_javascript` option in `mkdocs.yml` to add the two scripts above. Scripts referenced via `extra_javascript` are placed at the bottom of the HTML page, i.e., after the search implementation, which is too late.
 6. If your documentation should work **offline**, i.e., without internet access:
     1. Open [this file](https://unpkg.com/iframe-worker/polyfill) and save it as `iframe-worker.js` in your `docs_dir`.<br>
        Example path: `docs/assets/javascripts/iframe-worker.js`
@@ -50,8 +51,6 @@ To use the plugin with Material v5 projects:
         - search
     ```
     A delay of 100 ms worked with a search index of 24 MB ([prebuilt index](https://www.mkdocs.org/user-guide/configuration/#prebuild_index)).<br>Note that the `promise_delay` setting has a negative effect on performance (loading time will be increased).
-
-**Note:** We do not use `extra_javascript` option in `mkdocs.yml` because, according to the [docs](https://www.mkdocs.org/user-guide/styling-your-docs/#combining-the-custom_dir-and-template-blocks), when a library is needed to the website is better to use this method.
 
 ## Installation (Material v4)
 
