@@ -15,6 +15,7 @@ To use the plugin with Material v5 projects:
         - search
         - localsearch
     ```
+3. Make sure that the `use_directory_urls` setting is set to `false` in `mkdocs.yml` to have filenames in the URL (required when using the file:/// protocol).
 4. Add a `custom_dir` entry to the `theme` section in `mkdocs.yml`:
     ```yaml
     theme:
@@ -42,8 +43,7 @@ To use the plugin with Material v5 projects:
        to this:
        ```html
        <script src="{{ 'assets/javascripts/iframe-worker.js' | url }}"></script>
-       ```
-    3. make sure that the `use_directory_urls` setting is set to false in `mkdocs.yml` to have filenames in the URL (required when using the file:/// protocol).
+       ```   
 7. If your project has a **large search index** (several MBytes), add the `promise_delay` setting:
     ```yaml
     plugins:
