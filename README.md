@@ -43,6 +43,7 @@ To use the plugin with Material v5 projects:
        ```html
        <script src="{{ 'assets/javascripts/iframe-worker.js' | url }}"></script>
        ```
+    3. make sure that the `use_directory_urls` setting is set to false in `mkdocs.yml` to have filenames in the URL (required when using the file:/// protocol).
 7. If your project has a **large search index** (several MBytes), add the `promise_delay` setting:
     ```yaml
     plugins:
