@@ -47,9 +47,9 @@ To use the plugin with Material v5 projects:
 7. If your project has a **large search index** (several MBytes), add the `promise_delay` setting:
     ```yaml
     plugins:
+        - search
         - localsearch:
             promise_delay: 100
-        - search
     ```
     A delay of 100 ms worked with a search index of 24 MB ([prebuilt index](https://www.mkdocs.org/user-guide/configuration/#prebuild_index)).<br>Note that the `promise_delay` setting has a negative effect on performance (loading time will be increased).
 
