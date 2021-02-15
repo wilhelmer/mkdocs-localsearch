@@ -20,7 +20,7 @@ class LocalSearchPlugin(BasePlugin):
             # Open JSON search index file
             f = open(json_output_path,"r")
             # Modify file to provide a Promise resolving with the contents of the search index
-            search_index = "const local_index = " + f.read() + "; var search = { index: new Promise(resolve => setTimeout(() => resolve(local_index), " + str(self.config['promise_delay']) + ")) }"
+            search_index = "const local_index = " + f.read() + "; var local_search = { index: new Promise(resolve => setTimeout(() => resolve(local_index), " + str(self.config['promise_delay']) + ")) }; if (document.querySelector('meta[name=generator]').content.split(', ')[1].match(/\d/) < 7) { var search = local_search; } else { var __search = local_search; } local_search = null;"
             # Write to JSON file and rename JSON to JS
             utils.write_file(search_index.encode('utf-8'), json_output_path)
             f.close()
