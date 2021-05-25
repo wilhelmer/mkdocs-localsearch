@@ -20,6 +20,8 @@ class LocalSearchPlugin(BasePlugin):
             # Write to JSON file and rename JSON to JS
             utils.write_file(search_index.encode('utf-8'), json_output_path)
             f.close()
+            if os.path.exists(js_output_path):
+                os.remove(js_output_path)
             os.rename(json_output_path, js_output_path)
         else:
             log.warning('localsearch: Missing search plugin. You must add both search and localsearch to the list of plugins in mkdocs.yml.')
