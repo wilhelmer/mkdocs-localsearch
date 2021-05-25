@@ -1,5 +1,6 @@
 import os
 import logging
+import mkdocs
 from mkdocs import utils
 from mkdocs.config import config_options, Config
 from mkdocs.plugins import BasePlugin
@@ -16,7 +17,10 @@ class LocalSearchPlugin(BasePlugin):
             # Open JSON search index file
             f = open(json_output_path,"r")
             # Modify file to provide a Promise resolving with the contents of the search index
-            search_index = "const local_index = " + f.read() + "; var __search = { index: Promise.resolve(local_index) }"
+            if self.config.get('useCustomSearch', False):
+                search_index = "const local_index = " + f.read()
+            else:
+                search_index = "const local_index = " + f.read() + "; var __search = { index: Promise.resolve(local_index) }"
             # Write to JSON file and rename JSON to JS
             utils.write_file(search_index.encode('utf-8'), json_output_path)
             f.close()

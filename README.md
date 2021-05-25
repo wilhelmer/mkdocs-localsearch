@@ -95,6 +95,40 @@ To use the plugin with Material v5 or v6 projects:
     ```
     A delay of 100 ms worked with a search index of 24 MB ([prebuilt index](https://www.mkdocs.org/user-guide/configuration/#prebuild_index)).<br>Note that the `promise_delay` setting has a negative effect on performance (loading time will be increased).
 
+**Note:** If you [customize search](https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#custom-search) settings, such as [query transformation](https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#query-transformation), add the `useCustomSearch` setting:
+
+```yaml
+  - localsearch:
+      useCustomSearch: true
+```
+
+Example of `theme/main.html` file is: 
+
+```html
+{% extends "base.html" %}
+{% block config %}
+{{ super() }}
+{% if "localsearch" in config["plugins"] %}
+<script src="{{ 'assets/javascripts/iframe-worker.js' | url }}"></script>
+<script src="{{ 'search/search_index.js' | url }}"></script>
+{% endif %}
+<script src="https://cdn.jsdelivr.net/npm/tiny-segmenter@0.2.0/dist/tiny-segmenter-0.2.0.min.js"></script>
+<script>
+var __search = {
+    index: Promise.resolve(local_index),
+    transform: function(query) {
+        var segmenter = new TinySegmenter();
+        var segs = segmenter.segment(query);
+        var newQuery = segs.join(" ");
+        return newQuery;
+    }
+}
+</script>
+{% endblock %}
+```
+
+This setting is for Japanese "ja-jp" full-text search.
+
 ## Installation (Material v4)
 
 To use the plugin with Material v4 projects:
