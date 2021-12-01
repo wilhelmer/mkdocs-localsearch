@@ -4,9 +4,9 @@ A MkDocs plugin to make the native "search" plugin work locally (file:// protoco
 
 **NOTE:** This plugin only works with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme. If you need support for other themes, feel free to create a pull request.
 
-## Installation (Material v7)
+## Installation (Material v7 or v8)
 
-To use the plugin with Material v7 projects:
+To use the plugin with Material v7 or v8 projects:
 
 1. Install the plugin using pip: `pip install mkdocs-localsearch`
 2. Activate the plugin in `mkdocs.yml`, in addition to the `search` plugin:
