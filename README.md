@@ -6,6 +6,8 @@ A MkDocs plugin to make the native "search" plugin work locally (file:// protoco
 
 ## Installation (Material v7 or v8)
 
+> :bulb: If you are using Material for MkDocs [Insiders](https://squidfunk.github.io/mkdocs-material/insiders/), this plugin is not necessary. Use the inbuilt [`offline`](https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/#configuration) plugin instead. 
+
 To use the plugin with Material v7 or v8 projects:
 
 1. Install the plugin using pip: `pip install mkdocs-localsearch`
