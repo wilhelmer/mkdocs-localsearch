@@ -30,18 +30,18 @@ To use the plugin with Material v7 or v8 projects:
     {% block config %}
     {{ super() }}
     {% if "localsearch" in config["plugins"] %}
-    <script src="https://unpkg.com/iframe-worker/polyfill"></script>
+    <script src="https://unpkg.com/iframe-worker/shim"></script>
     <script src="{{ 'search/search_index.js' | url }}"></script>
     {% endif %}
     {% endblock %}
     ```
     **Note:** Don't use the `extra_javascript` option in `mkdocs.yml` to add the two scripts above. Scripts referenced via `extra_javascript` are placed at the bottom of the HTML page, i.e., after the search implementation, which is too late.
 6. If your documentation should work **offline**, i.e., without internet access:
-    1. Open [this file](https://unpkg.com/iframe-worker/polyfill) and save it as `iframe-worker.js` in your `docs_dir`.<br>
+    1. Open [this file](https://unpkg.com/iframe-worker/shim) and save it as `iframe-worker.js` in your `docs_dir`.<br>
        Example path: `docs/assets/javascripts/iframe-worker.js`
     2. Edit `theme/main.html` and change the following line:
        ```html
-       <script src="https://unpkg.com/iframe-worker/polyfill"></script>
+       <script src="https://unpkg.com/iframe-worker/shim"></script>
        ```
        to this:
        ```html
@@ -71,18 +71,18 @@ To use the plugin with Material v5 or v6 projects:
     {% extends "base.html" %}
     {% block config %}
     {% if "localsearch" in config["plugins"] %}
-    <script src="https://unpkg.com/iframe-worker/polyfill"></script>
+    <script src="https://unpkg.com/iframe-worker/shim"></script>
     <script src="{{ 'search/search_index.js' | url }}"></script>
     {% endif %}
     {% endblock %}
     ```
     **Note:** Don't use the `extra_javascript` option in `mkdocs.yml` to add the two scripts above. Scripts referenced via `extra_javascript` are placed at the bottom of the HTML page, i.e., after the search implementation, which is too late.
 6. If your documentation should work **offline**, i.e., without internet access:
-    1. Open [this file](https://unpkg.com/iframe-worker/polyfill) and save it as `iframe-worker.js` in your `docs_dir`.<br>
+    1. Open [this file](https://unpkg.com/iframe-worker/shim) and save it as `iframe-worker.js` in your `docs_dir`.<br>
        Example path: `docs/assets/javascripts/iframe-worker.js`
     2. Edit `theme/main.html` and change the following line:
        ```html
-       <script src="https://unpkg.com/iframe-worker/polyfill"></script>
+       <script src="https://unpkg.com/iframe-worker/shim"></script>
        ```
        to this:
        ```html
