@@ -2,7 +2,9 @@
 
 A MkDocs plugin to make the native "search" plugin work locally (file:// protocol).
 
-**NOTE:** This plugin only works with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme. If you need support for other themes, feel free to create a pull request.
+> :warning: Plugin not working anymore? On Nov 3, 2022, the URL given in steps 5 and 6 below changed from "iframe-worker/polyfill" to "iframe-worker/shim". Update `theme/main.html` if necessary.
+
+This plugin only works with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme. If you need support for other themes, feel free to create a pull request.
 
 ## Installation (Material v7 or v8)
 
@@ -17,7 +19,7 @@ To use the plugin with Material v7 or v8 projects:
         - search
         - localsearch
     ```
-3. Make sure that the `use_directory_urls` setting is set to `false` in `mkdocs.yml` to have filenames in the URL (required when using the file:/// protocol).
+3. Make sure that `use_directory_urls` is set to `false` in `mkdocs.yml`.
 4. Add a `custom_dir` entry to the `theme` section in `mkdocs.yml`:
     ```yaml
     theme:
@@ -59,7 +61,7 @@ To use the plugin with Material v5 or v6 projects:
         - search
         - localsearch
     ```
-3. Make sure that the `use_directory_urls` setting is set to `false` in `mkdocs.yml` to have filenames in the URL (required when using the file:/// protocol).
+3. Make sure that `use_directory_urls` is set to `false` in `mkdocs.yml`.
 4. Add a `custom_dir` entry to the `theme` section in `mkdocs.yml`:
     ```yaml
     theme:
