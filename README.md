@@ -2,13 +2,15 @@
 
 A MkDocs plugin to make the native "search" plugin work locally (file:// protocol).
 
-> :warning: Plugin not working anymore? On Nov 3, 2022, the URL given in steps 5 and 6 below changed from "iframe-worker/polyfill" to "iframe-worker/shim". Update `theme/main.html` if necessary.
-
 This plugin only works with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme. If you need support for other themes, feel free to create a pull request.
+
+## Installation (Material v9)
+
+If you are using Material v9 or later, this plugin is **not necessary**. Use the inbuilt [`offline`](https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/#configuration) plugin instead. 
 
 ## Installation (Material v7 or v8)
 
-> :bulb: If you are using Material for MkDocs [Insiders](https://squidfunk.github.io/mkdocs-material/insiders/), this plugin is not necessary. Use the inbuilt [`offline`](https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/#configuration) plugin instead. 
+> :warning: Plugin not working anymore? On Nov 3, 2022, the URL given in steps 5 and 6 below changed from "iframe-worker/polyfill" to "iframe-worker/shim". Update `theme/main.html` if necessary.
 
 To use the plugin with Material v7 or v8 projects:
 
